@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlxd.glhdcs.dao.TSSurrenalStopTendMapper">
+    <resultMap id="BaseResultMap" type="com.hlxd.glhdcs.pojo.TSSurrenalStopTend">
+        <!--
+        @mbggenerated
+        -->
+        <id column="STOP_SUPPLIE_ID" jdbcType="VARCHAR" property="stopSupplieId" />
+        <result column="STOP_SUPPLIE_NAME" jdbcType="VARCHAR" property="stopSupplieName" />
+        <result column="MATERIAL_CODE" jdbcType="VARCHAR" property="materialCode" />
+        <result column="EM_MODEL_NAME" jdbcType="VARCHAR" property="emModelName" />
+        <result column="STOP_SUPPLIE_TYPE" jdbcType="VARCHAR" property="stopSupplieType" />
+        <result column="STOP_SUPPLIE _ SUPPLIER" jdbcType="VARCHAR" property="stopSupplieSupplier" />
+        <result column="STOP_CAUSE" jdbcType="VARCHAR" property="stopCause" />
+        <result column="IS_ENABLE" jdbcType="BIT" property="isEnable" />
+        <result column="STOP_SUPPLIE _ DOWNTIME" jdbcType="DATE" property="stopSupplieDowntime" />
+        <result column="STOP_SUPPLIE _ WRITETIME" jdbcType="TIMESTAMP" property="stopSupplieWritetime" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--
+        @mbggenerated
+        -->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+        @mbggenerated
+        -->
+        STOP_SUPPLIE_ID, STOP_SUPPLIE_NAME, MATERIAL_CODE, EM_MODEL_NAME, STOP_SUPPLIE_TYPE, 
+        "STOP_SUPPLIE _ SUPPLIER", STOP_CAUSE, IS_ENABLE, "STOP_SUPPLIE _ DOWNTIME", "STOP_SUPPLIE _ WRITETIME"
+    </sql>
+    <select id="selectByExample" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTendExample" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from T_S_SURRENAL_STOP_TEND
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from T_S_SURRENAL_STOP_TEND
+        where STOP_SUPPLIE_ID = #{stopSupplieId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--
+        @mbggenerated
+        -->
+        delete from T_S_SURRENAL_STOP_TEND
+        where STOP_SUPPLIE_ID = #{stopSupplieId,jdbcType=VARCHAR}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTendExample">
+        <!--
+        @mbggenerated
+        -->
+        delete from T_S_SURRENAL_STOP_TEND
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTend">
+        <!--
+        @mbggenerated
+        -->
+        insert into T_S_SURRENAL_STOP_TEND (STOP_SUPPLIE_ID, STOP_SUPPLIE_NAME, MATERIAL_CODE, 
+            EM_MODEL_NAME, STOP_SUPPLIE_TYPE, "STOP_SUPPLIE _ SUPPLIER", 
+            STOP_CAUSE, IS_ENABLE, "STOP_SUPPLIE _ DOWNTIME", 
+            "STOP_SUPPLIE _ WRITETIME")
+        values (#{stopSupplieId,jdbcType=VARCHAR}, #{stopSupplieName,jdbcType=VARCHAR}, #{materialCode,jdbcType=VARCHAR}, 
+            #{emModelName,jdbcType=VARCHAR}, #{stopSupplieType,jdbcType=VARCHAR}, #{stopSupplieSupplier,jdbcType=VARCHAR}, 
+            #{stopCause,jdbcType=VARCHAR}, #{isEnable,jdbcType=BIT}, #{stopSupplieDowntime,jdbcType=DATE}, 
+            #{stopSupplieWritetime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTend">
+        <!--
+        @mbggenerated
+        -->
+        insert into T_S_SURRENAL_STOP_TEND
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stopSupplieId != null">
+                STOP_SUPPLIE_ID,
+            </if>
+            <if test="stopSupplieName != null">
+                STOP_SUPPLIE_NAME,
+            </if>
+            <if test="materialCode != null">
+                MATERIAL_CODE,
+            </if>
+            <if test="emModelName != null">
+                EM_MODEL_NAME,
+            </if>
+            <if test="stopSupplieType != null">
+                STOP_SUPPLIE_TYPE,
+            </if>
+            <if test="stopSupplieSupplier != null">
+                "STOP_SUPPLIE _ SUPPLIER",
+            </if>
+            <if test="stopCause != null">
+                STOP_CAUSE,
+            </if>
+            <if test="isEnable != null">
+                IS_ENABLE,
+            </if>
+            <if test="stopSupplieDowntime != null">
+                "STOP_SUPPLIE _ DOWNTIME",
+            </if>
+            <if test="stopSupplieWritetime != null">
+                "STOP_SUPPLIE _ WRITETIME",
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stopSupplieId != null">
+                #{stopSupplieId,jdbcType=VARCHAR},
+            </if>
+            <if test="stopSupplieName != null">
+                #{stopSupplieName,jdbcType=VARCHAR},
+            </if>
+            <if test="materialCode != null">
+                #{materialCode,jdbcType=VARCHAR},
+            </if>
+            <if test="emModelName != null">
+                #{emModelName,jdbcType=VARCHAR},
+            </if>
+            <if test="stopSupplieType != null">
+                #{stopSupplieType,jdbcType=VARCHAR},
+            </if>
+            <if test="stopSupplieSupplier != null">
+                #{stopSupplieSupplier,jdbcType=VARCHAR},
+            </if>
+            <if test="stopCause != null">
+                #{stopCause,jdbcType=VARCHAR},
+            </if>
+            <if test="isEnable != null">
+                #{isEnable,jdbcType=BIT},
+            </if>
+            <if test="stopSupplieDowntime != null">
+                #{stopSupplieDowntime,jdbcType=DATE},
+            </if>
+            <if test="stopSupplieWritetime != null">
+                #{stopSupplieWritetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTendExample" resultType="java.lang.Integer">
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from T_S_SURRENAL_STOP_TEND
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update T_S_SURRENAL_STOP_TEND
+        <set>
+            <if test="record.stopSupplieId != null">
+                STOP_SUPPLIE_ID = #{record.stopSupplieId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.stopSupplieName != null">
+                STOP_SUPPLIE_NAME = #{record.stopSupplieName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.materialCode != null">
+                MATERIAL_CODE = #{record.materialCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.emModelName != null">
+                EM_MODEL_NAME = #{record.emModelName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.stopSupplieType != null">
+                STOP_SUPPLIE_TYPE = #{record.stopSupplieType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.stopSupplieSupplier != null">
+                "STOP_SUPPLIE _ SUPPLIER" = #{record.stopSupplieSupplier,jdbcType=VARCHAR},
+            </if>
+            <if test="record.stopCause != null">
+                STOP_CAUSE = #{record.stopCause,jdbcType=VARCHAR},
+            </if>
+            <if test="record.isEnable != null">
+                IS_ENABLE = #{record.isEnable,jdbcType=BIT},
+            </if>
+            <if test="record.stopSupplieDowntime != null">
+                "STOP_SUPPLIE _ DOWNTIME" = #{record.stopSupplieDowntime,jdbcType=DATE},
+            </if>
+            <if test="record.stopSupplieWritetime != null">
+                "STOP_SUPPLIE _ WRITETIME" = #{record.stopSupplieWritetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--
+        @mbggenerated
+        -->
+        update T_S_SURRENAL_STOP_TEND
+        set STOP_SUPPLIE_ID = #{record.stopSupplieId,jdbcType=VARCHAR},
+            STOP_SUPPLIE_NAME = #{record.stopSupplieName,jdbcType=VARCHAR},
+            MATERIAL_CODE = #{record.materialCode,jdbcType=VARCHAR},
+            EM_MODEL_NAME = #{record.emModelName,jdbcType=VARCHAR},
+            STOP_SUPPLIE_TYPE = #{record.stopSupplieType,jdbcType=VARCHAR},
+            "STOP_SUPPLIE _ SUPPLIER" = #{record.stopSupplieSupplier,jdbcType=VARCHAR},
+            STOP_CAUSE = #{record.stopCause,jdbcType=VARCHAR},
+            IS_ENABLE = #{record.isEnable,jdbcType=BIT},
+            "STOP_SUPPLIE _ DOWNTIME" = #{record.stopSupplieDowntime,jdbcType=DATE},
+            "STOP_SUPPLIE _ WRITETIME" = #{record.stopSupplieWritetime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTend">
+        <!--
+        @mbggenerated
+        -->
+        update T_S_SURRENAL_STOP_TEND
+        <set>
+            <if test="stopSupplieName != null">
+                STOP_SUPPLIE_NAME = #{stopSupplieName,jdbcType=VARCHAR},
+            </if>
+            <if test="materialCode != null">
+                MATERIAL_CODE = #{materialCode,jdbcType=VARCHAR},
+            </if>
+            <if test="emModelName != null">
+                EM_MODEL_NAME = #{emModelName,jdbcType=VARCHAR},
+            </if>
+            <if test="stopSupplieType != null">
+                STOP_SUPPLIE_TYPE = #{stopSupplieType,jdbcType=VARCHAR},
+            </if>
+            <if test="stopSupplieSupplier != null">
+                "STOP_SUPPLIE _ SUPPLIER" = #{stopSupplieSupplier,jdbcType=VARCHAR},
+            </if>
+            <if test="stopCause != null">
+                STOP_CAUSE = #{stopCause,jdbcType=VARCHAR},
+            </if>
+            <if test="isEnable != null">
+                IS_ENABLE = #{isEnable,jdbcType=BIT},
+            </if>
+            <if test="stopSupplieDowntime != null">
+                "STOP_SUPPLIE _ DOWNTIME" = #{stopSupplieDowntime,jdbcType=DATE},
+            </if>
+            <if test="stopSupplieWritetime != null">
+                "STOP_SUPPLIE _ WRITETIME" = #{stopSupplieWritetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where STOP_SUPPLIE_ID = #{stopSupplieId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hlxd.glhdcs.pojo.TSSurrenalStopTend">
+        <!--
+        @mbggenerated
+        -->
+        update T_S_SURRENAL_STOP_TEND
+        set STOP_SUPPLIE_NAME = #{stopSupplieName,jdbcType=VARCHAR},
+            MATERIAL_CODE = #{materialCode,jdbcType=VARCHAR},
+            EM_MODEL_NAME = #{emModelName,jdbcType=VARCHAR},
+            STOP_SUPPLIE_TYPE = #{stopSupplieType,jdbcType=VARCHAR},
+            "STOP_SUPPLIE _ SUPPLIER" = #{stopSupplieSupplier,jdbcType=VARCHAR},
+            STOP_CAUSE = #{stopCause,jdbcType=VARCHAR},
+            IS_ENABLE = #{isEnable,jdbcType=BIT},
+            "STOP_SUPPLIE _ DOWNTIME" = #{stopSupplieDowntime,jdbcType=DATE},
+            "STOP_SUPPLIE _ WRITETIME" = #{stopSupplieWritetime,jdbcType=TIMESTAMP}
+        where STOP_SUPPLIE_ID = #{stopSupplieId,jdbcType=VARCHAR}
+    </update>
+</mapper>
